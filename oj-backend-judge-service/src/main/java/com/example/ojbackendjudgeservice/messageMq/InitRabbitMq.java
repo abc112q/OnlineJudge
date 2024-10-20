@@ -39,7 +39,7 @@ public class InitRabbitMq {
             Map<String,Object> codeMap = new HashMap<>();
             codeMap.put("x-dead-letter-exchange",CODE_DLX_EXCHANGE);
             codeMap.put("x-dead-letter-routing-key",CODE_ROUTING_KEY);
-            // 将我们处理用户代码的队列于私信交换机绑定
+            // 将我们处理用户代码的队列于死信交换机绑定
             channel.queueDeclare(codeQueue, true, false, false, codeMap);
             channel.queueBind(codeQueue, EXCHANGE_NAME, "my_routingKey");
 
